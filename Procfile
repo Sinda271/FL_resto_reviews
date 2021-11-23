@@ -1,1 +1,1 @@
-web: uvicorn server:app --host=0.0.0.0 --port=${PORT:-5000} & uvicorn client:app --host=0.0.0.0 --port=${PORT:-5001} & wait -n
+web: trap '' SIGTERM; uvicorn server:app --host=0.0.0.0 --port=${PORT:-5000} & uvicorn client:app --host=0.0.0.0 --port=${PORT:-5001} & wait -n; kill -SIGTERM -$$; wait
