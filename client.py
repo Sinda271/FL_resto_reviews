@@ -1,6 +1,7 @@
 import flwr as fl
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import argparse
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import log_loss
 import utils
@@ -12,6 +13,13 @@ if not sys.warnoptions:
     warnings.simplefilter("ignore")
 
 app = FastAPI()
+
+
+# Parse command line arguments
+# parser = argparse.ArgumentParser(description="restaurant rating")
+# parser.add_argument("--train_start", type=int, required=True)
+# parser.add_argument("--train_end", type=int, required=True)
+# args = parser.parse_args()
 
 @app.post("/participateFL")
 def listen_and_participate(train_start:int, train_end:int, ipaddress:str ,port:int):
