@@ -22,7 +22,7 @@ app = FastAPI()
 # args = parser.parse_args()
 
 @app.post("/participateFL")
-def listen_and_participate(train_start:int, train_end:int, ipaddress:str ,port:int):
+def listen_and_participate(train_start:int, train_end:int, ipaddress:str ):
     # Create LogisticRegression Model
     model = LogisticRegression(
         penalty="l2",
@@ -62,7 +62,7 @@ def listen_and_participate(train_start:int, train_end:int, ipaddress:str ,port:i
 
     # Start Flower client
     fl.client.start_numpy_client(
-        server_address=ipaddress + ':' + str(port),
+        server_address=ipaddress,
         client=FlowerClient(),
         grpc_max_message_length=1024 * 1024 * 1024
     )
